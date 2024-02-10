@@ -3,12 +3,18 @@
 
 <template>
   <!-- Sidebar start -->
-  <div>
+  <div class="sidebar">
+    <div>
+      <p class="number">1</p>
+      <p class="number">2</p>
+      <p class="number">3</p>
+      <p class="number">4</p>
+    </div>
       <div>
-        <div>Step <span>1</span> Your info</div>
-        <div>Step <span> 2</span> Select plan</div>
-        <div>Step <span>3</span> Add-ons</div>
-        <div>Step <span>4</span> Summary</div>
+        <div><p>Step 1</p> <h3>Your info</h3></div>
+        <div><p>Step 2</p> <h3>Select plan</h3></div>
+        <div><p>Step 3</p> <h3>Add-ons</h3></div>
+        <div><p>Step 4</p> <h3>Summary</h3></div>
       </div>
       <div class="filler-div-50">
         <!-- filler div to set the parent as template-grid-colums: 50% 50% -->
