@@ -9,7 +9,7 @@ import FinishingUp from './components/FinishingUp.vue';
 const stepState = ref(0);
 let numberDiv;
 onMounted(() => {
-   numberDiv = document.querySelector('.numberDiv');
+  numberDiv = document.querySelector('.numberDiv');
 })
 
 const addActive = () => {
@@ -49,20 +49,20 @@ const nextPage = () => {
       <p class="number">3</p>
       <p class="number">4</p>
     </div>
-    <div>
-      <div>
+    <div class="stepWrapper">
+      <div class="step">
         <p>Step 1</p>
         <h3>Your info</h3>
       </div>
-      <div>
+      <div class="step">
         <p>Step 2</p>
         <h3>Select plan</h3>
       </div>
-      <div>
+      <div class="step">
         <p>Step 3</p>
         <h3>Add-ons</h3>
       </div>
-      <div>
+      <div class="step">
         <p>Step 4</p>
         <h3>Summary</h3>
       </div>
@@ -72,7 +72,7 @@ const nextPage = () => {
     </div>
   </div>
   <!-- Sidebar end -->
-  <div class="stepWrapper">
+  <div class="contentDiv">
     <PersonalInfo v-if="stepState == 0" />
     <SelectPlan v-if="stepState == 1" />
     <PickAddons v-if="stepState == 2" />
@@ -85,6 +85,7 @@ const nextPage = () => {
     </button>
     <button @click="nextPage">Next Step</button>
   </div>
+
   <div class="attribution">
     Challenge by
     <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded by <a href="#">Your
@@ -94,6 +95,17 @@ const nextPage = () => {
 
 <style scoped lang="scss">
 // mediaquery to set the background for the desktop version
+@media only screen and (min-width: 900px) {
+  .sidebar {}
+
+  .stepWrapper {
+    .step {
+      h3 {
+        display: none;
+      }
+    }
+  }
+}
 
 * {
   color: hsl(231, 11%, 63%);
@@ -102,9 +114,20 @@ const nextPage = () => {
 // sidebar styling
 .sidebar {
   background-image: url('./assets/images/bg-sidebar-mobile.svg');
+  height: 5rem;
+  .stepWrapper {
+    display: none;
+  }
   .numberDiv {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
     .number {
+      text-align: center;
+      height: 20px;
+      width: 20px;
       border-radius: 90px;
+      // padding: 10px;
       background-color: white;
     }
 
@@ -112,5 +135,4 @@ const nextPage = () => {
       background-color: beige;
     }
   }
-}
-</style>
+}</style>
