@@ -93,12 +93,15 @@ const nextPage = () => {
 </template>
 
 <style scoped lang="scss">
+// mediaquery to set the background for the desktop version
+
 * {
   color: hsl(231, 11%, 63%);
 }
 
 // sidebar styling
 .sidebar {
+  background-image: url('./assets/images/bg-sidebar-mobile.svg');
   .numberDiv {
     .number {
       border-radius: 90px;
