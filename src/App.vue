@@ -3,23 +3,27 @@ import { onMounted, ref } from 'vue';
 import PersonalInfo from './components/PersonalInfo.vue'
 import SelectPlan from './components/SelectPlan.vue'
 import PickAddons from './components/PickAddons.vue'
-import ThankYou from './components/ThankYou.vue'
-import FinishingUp from './components/FinishingUp.vue'
+import ThankYou from './components/ThankYou.vue';
+import FinishingUp from './components/FinishingUp.vue';
 
-const stepState = ref(1)
-
-const numberDiv = document.querySelector('.numberDiv')
+const stepState = ref(0);
+let numberDiv;
+onMounted(() => {
+   numberDiv = document.querySelector('.numberDiv');
+})
 
 const addActive = () => {
-  numberDiv.children[stepState.value].classList.add('active')
+  // console.log(numberDiv);
+  numberDiv.children[stepState.value].classList.add('active');
 }
 
 const removeActive = () => {
-  numberDiv.children[stepState.value].classList.remove('active')
+  // console.log(numberDiv);
+  numberDiv.children[stepState.value].classList.remove('active');
 }
 
 const goBack = () => {
-  if (stepState.value > 1) {
+  if (stepState.value > 0) {
     removeActive()
     stepState.value--
     addActive()
@@ -27,16 +31,12 @@ const goBack = () => {
 }
 
 const nextPage = () => {
-  if (stepState.value < 4) {
+  if (stepState.value < 3) {
     removeActive()
-    stepState.value++
+    stepState.value = stepState.value + 1
     addActive()
   }
 }
-
-onMounted(() => {
-  addActive()
-})
 
 </script>
 
@@ -44,7 +44,7 @@ onMounted(() => {
   <!-- Sidebar start -->
   <div class="sidebar">
     <div class="numberDiv">
-      <p class="number">1</p>
+      <p class="number active">1</p>
       <p class="number">2</p>
       <p class="number">3</p>
       <p class="number">4</p>
@@ -72,13 +72,12 @@ onMounted(() => {
     </div>
   </div>
   <!-- Sidebar end -->
-
   <div class="stepWrapper">
-    <PersonalInfo v-if="stepState == 1" />
-    <SelectPlan v-if="stepState == 2" />
-    <PickAddons v-if="stepState == 3" />
-    <FinishingUp v-if="stepState == 4" />
-    <ThankYou v-if="stepState == 5" />
+    <PersonalInfo v-if="stepState == 0" />
+    <SelectPlan v-if="stepState == 1" />
+    <PickAddons v-if="stepState == 2" />
+    <FinishingUp v-if="stepState == 3" />
+    <ThankYou v-if="stepState == 4" />
   </div>
   <div class="controls">
     <button @click="goBack">
