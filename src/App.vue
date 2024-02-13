@@ -7,21 +7,26 @@ import ThankYou from './components/ThankYou.vue';
 import FinishingUp from './components/FinishingUp.vue';
 
 const stepState = ref(0);
+// state for the :
+// name, email, phone number
+// plan, monthly, yearly
+// addons
+
 let numberDiv;
 onMounted(() => {
   numberDiv = document.querySelector('.numberDiv');
 })
 
 const addActive = () => {
-  // console.log(numberDiv);
+  console.log(numberDiv.children[stepState.value]);
   numberDiv.children[stepState.value].classList.add('active');
 }
 
 const removeActive = () => {
-  // console.log(numberDiv);
+  console.log(numberDiv.children[stepState.value]);
   numberDiv.children[stepState.value].classList.remove('active');
 }
-
+  
 const goBack = () => {
   if (stepState.value > 0) {
     removeActive()
@@ -44,10 +49,10 @@ const nextPage = () => {
   <!-- Sidebar start -->
   <div class="sidebar">
     <div class="numberDiv">
-      <p class="number active">1</p>
-      <p class="number">2</p>
-      <p class="number">3</p>
-      <p class="number">4</p>
+      <div class="number active">1</div>
+      <div class="number">2</div>
+      <div class="number">3</div>
+      <div class="number">4</div>
     </div>
     <div class="stepWrapper">
       <div class="step">
@@ -96,12 +101,13 @@ const nextPage = () => {
 <style scoped lang="scss">
 // mediaquery to set the background for the desktop version
 @media only screen and (min-width: 900px) {
-  .sidebar {}
-
-  .stepWrapper {
-    .step {
-      h3 {
-        display: none;
+  .sidebar {
+    background-image: url('assets/images/bg-sidebar-desktop.svg');
+    .stepWrapper {
+      .step {
+        h3 {
+          display: none;
+        }
       }
     }
   }
@@ -114,25 +120,43 @@ const nextPage = () => {
 // sidebar styling
 .sidebar {
   background-image: url('./assets/images/bg-sidebar-mobile.svg');
-  height: 5rem;
+  height: 8rem;
+  display: grid;
+  grid-template-rows: 50% 50%;
   .stepWrapper {
     display: none;
   }
+
   .numberDiv {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 1.5rem;
+    padding: 50px;
+    // height: fit-content;
+    // width: fit-content;
     .number {
-      text-align: center;
-      height: 20px;
-      width: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 2rem;
+      width: 2rem;
+      border: 1px solid white;
       border-radius: 90px;
-      // padding: 10px;
-      background-color: white;
+      padding: 10px;
+      margin: 0;
+      background-color: transparent;
     }
 
     .number.active {
       background-color: beige;
     }
   }
-}</style>
+}
+.contentDiv {
+ width: 90%;
+ margin: 0 auto;
+ background-color: white; 
+ 
+}
+</style>
