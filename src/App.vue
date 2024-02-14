@@ -88,7 +88,7 @@ const nextPage = () => {
     <button @click="goBack">
       Go Back
     </button>
-    <button @click="nextPage">Next Step</button>
+    <button class="next" @click="nextPage">Next Step</button>
   </div>
 
   <div class="attribution">
@@ -98,7 +98,7 @@ const nextPage = () => {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
 // mediaquery to set the background for the desktop version
 @media only screen and (min-width: 900px) {
   .sidebar {
@@ -113,8 +113,12 @@ const nextPage = () => {
   }
 }
 
+// Global styling
 * {
   color: hsl(231, 11%, 63%);
+}
+h1, h2, h3, h4 {
+  color: hsl(213, 96%, 18%);
 }
 
 // sidebar styling
@@ -145,11 +149,13 @@ const nextPage = () => {
       border-radius: 90px;
       padding: 10px;
       margin: 0;
+      color: White;
       background-color: transparent;
     }
 
     .number.active {
       background-color: beige;
+      color:hsl(213, 96%, 18%);
     }
   }
 }
@@ -157,6 +163,10 @@ const nextPage = () => {
  width: 90%;
  margin: 0 auto;
  background-color: white; 
- 
+}
+.controls {
+  .next {
+    background-color: hsl(243, 100%, 62%);
+  }
 }
 </style>

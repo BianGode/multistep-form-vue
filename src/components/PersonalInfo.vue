@@ -1,5 +1,6 @@
 <script setup>
 
+
 </script>
 
 <template>
@@ -7,7 +8,7 @@
     <!-- Step 1 start -->
     <div class="step-one-div">
       <h1>Personal info</h1>
-      <p>Please provide your name, email address, and phone number.</p>
+      <p class="lightGrey">Please provide your name, email address, and phone number.</p>
       <label>Name</label>
       <input type="text" placeholder="e.g. Stephen King ">
       <label>Email Address</label>
