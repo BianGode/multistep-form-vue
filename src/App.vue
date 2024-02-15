@@ -13,6 +13,7 @@ const stepState = ref(0);
 // addons
 
 let numberDiv;
+
 onMounted(() => {
   numberDiv = document.querySelector('.numberDiv');
 })
